@@ -206,7 +206,7 @@ class CraftLab(object):
     env_canvas[..., :] = self._colors['background']
 
     # Place all components
-    for name, component_i in state.world.cookbook.index.contents.iteritems():
+    for name, component_i in state.world.cookbook.index.contents.items():
       # Check if the component is there, if so, color env_canvas accordingly.
       x_i, y_i = np.nonzero(state.grid[..., component_i])
       env_canvas[x_i, y_i] = self._colors[name]
@@ -226,7 +226,7 @@ class CraftLab(object):
     inventory_canvas = np.zeros((2, len(state.world.grabbable_indices) + 1, 3))
     for i, obj_id in enumerate(state.world.grabbable_indices[1:]):
       inventory_canvas[0, i + 1] = self._colors[state.world.cookbook.index.get(obj_id)]
-    for c in xrange(3):
+    for c in range(3):
       inventory_canvas[1, 1:-1, c] = np.minimum(state.inventory[state.world.grabbable_indices[1:]], 1)
     inventory_img = Image.fromarray(
         (inventory_canvas * 255).astype(np.uint8), mode='RGB')

@@ -89,7 +89,7 @@ class EnvironmentFactory(object):
 
   def sample_environment(self, task_name=None):
     if task_name is None:
-      task_name = np.random.choice(self.task_names)
+      task_name = np.random.choice(list(self.task_names))
 
     if self._reuse_environments:
       return self._env_cache.setdefault(task_name,
