@@ -234,8 +234,6 @@ class CraftState(object):
 
       # Position
       pos_feats = np.asarray(self.pos)
-      pos_feats[0] /= WIDTH
-      pos_feats[1] /= HEIGHT
 
       # Direction
       dir_features = np.zeros(4)
